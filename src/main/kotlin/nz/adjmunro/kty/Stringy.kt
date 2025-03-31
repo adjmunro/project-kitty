@@ -6,16 +6,17 @@ import nz.adjmunro.kty.functions.Merge
 import nz.adjmunro.kty.functions.MergeABtoA
 import nz.adjmunro.kty.functions.Transformable
 import nz.adjmunro.kty.functions.operators.comparable.BoxedComparable
+import nz.adjmunro.kty.functions.operators.comparable.WrapperComparable
 import nz.adjmunro.kty.functions.operators.plus.Addable
 import nz.adjmunro.kty.functions.operators.plus.AnyAddable
 
 @KtyDsl
 public interface Stringy<W : Stringy<W>> :
-    BoxedComparable<W, String>,
+    WrapperComparable<W, String>,
     CharSequence
 {
     /** @see String.compareTo */
-    override val compareToSelf: Difference<String>
+    override val compare: Difference<String>
         get() = String::compareTo
 
     /** @see CharSequence.length */

@@ -10,6 +10,7 @@ import nz.adjmunro.kty.functions.operators.cast.NumberCastable
 import nz.adjmunro.kty.functions.operators.comparable.BoxedComparable
 import nz.adjmunro.kty.functions.operators.comparable.NumberComparable
 import nz.adjmunro.kty.functions.operators.cast.Specifiable
+import nz.adjmunro.kty.functions.operators.comparable.WrapperComparable
 import java.math.BigDecimal
 import java.math.BigInteger
 
@@ -17,7 +18,7 @@ import java.math.BigInteger
 public interface Numbery<ActualWrapper, BackingField> :
     Mathable<ActualWrapper, BackingField>,
     UnaryMathable<ActualWrapper, BackingField>,
-    BoxedComparable<ActualWrapper, BackingField>,
+    WrapperComparable<ActualWrapper, BackingField>,
     NumberMathable<ActualWrapper, BackingField>,
     NumberComparable<ActualWrapper, BackingField>,
     Specifiable<Number, BackingField>,
@@ -50,5 +51,5 @@ public interface Numbery<ActualWrapper, BackingField> :
         get() = MergeABtoA { a: BackingField, b: Number -> remainder(a, spec(b)) }
 
     override val compareByNumber: DifferenceAB<BackingField, Number>
-        get() = DifferenceAB { a: BackingField, b: Number -> compareToSelf(a, spec(b)) }
+        get() = DifferenceAB { a: BackingField, b: Number -> compare(a, spec(b)) }
 }

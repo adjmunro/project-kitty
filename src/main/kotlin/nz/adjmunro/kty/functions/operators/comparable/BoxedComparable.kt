@@ -13,18 +13,13 @@ import nz.adjmunro.kty.functions.KtyDsl
 @KtyDsl
 @Suppress("INAPPLICABLE_JVM_NAME")
 public interface BoxedComparable<ActualWrapper, BackingField> :
-    Boxed<ActualWrapper, BackingField>,
-    Comparable<ActualWrapper> where
+    Boxed<ActualWrapper, BackingField> where
     ActualWrapper : BoxedComparable<ActualWrapper, BackingField>
 {
     @KtyDsl
-    public val compareToSelf: Difference<BackingField>
-
-    @KtyDsl
-    @JvmName("compareToActualWrapper")
-    public override fun compareTo(other: ActualWrapper): Int = compareToSelf(value, other.value)
+    public val compare: Difference<BackingField>
 
     @KtyDsl
     @JvmName("compareToBackingField")
-    public operator fun compareTo(other: BackingField): Int = compareToSelf(value, other)
+    public operator fun compareTo(other: BackingField): Int = compare(value, other)
 }

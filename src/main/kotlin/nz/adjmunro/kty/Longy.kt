@@ -20,6 +20,6 @@ public interface Longy<W : Longy<W>> : Numbery<W, Long> {
     override val negate: Transform<Long> get() = Long::unaryMinus
     override val increment: Transform<Long> get() = Long::inc
     override val decrement: Transform<Long> get() = Long::dec
-    override val compareToSelf: Difference<Long> get() = Long::compareTo
+    override val compare: Difference<Long> get() = Long::compareTo
     override val sign: W get() = reconstruct(spec(value.sign))
 }

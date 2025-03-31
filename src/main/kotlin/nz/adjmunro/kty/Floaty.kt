@@ -23,7 +23,7 @@ public interface Floaty<W : Floaty<W>> : Numbery<W, Float>, RoundCastable {
     override val negate: Transform<Float> get() = Float::unaryMinus
     override val increment: Transform<Float> get() = Float::inc
     override val decrement: Transform<Float> get() = Float::dec
-    override val compareToSelf: Difference<Float> get() = Float::compareTo
+    override val compare: Difference<Float> get() = Float::compareTo
     override val roundToInt: () -> Int get() = value::roundToInt
     override val roundToLong: () -> Long get() = value::roundToLong
     override val sign: W get() = reconstruct(value.sign)

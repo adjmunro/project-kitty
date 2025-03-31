@@ -20,6 +20,6 @@ public interface Inty<W : Inty<W>> : Numbery<W, Int> {
     override val negate: Transform<Int> get() = Int::unaryMinus
     override val increment: Transform<Int> get() = Int::inc
     override val decrement: Transform<Int> get() = Int::dec
-    override val compareToSelf: Difference<Int> get() = Int::compareTo
+    override val compare: Difference<Int> get() = Int::compareTo
     override val sign: W get() = reconstruct(value.sign)
 }

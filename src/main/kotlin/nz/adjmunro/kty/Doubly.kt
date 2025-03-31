@@ -23,7 +23,7 @@ public interface Doubly<W : Doubly<W>> : Numbery<W, Double>, RoundCastable {
     override val negate: Transform<Double> get() = Double::unaryMinus
     override val increment: Transform<Double> get() = Double::inc
     override val decrement: Transform<Double> get() = Double::dec
-    override val compareToSelf: Difference<Double> get() = Double::compareTo
+    override val compare: Difference<Double> get() = Double::compareTo
     override val roundToInt: () -> Int get() = value::roundToInt
     override val roundToLong: () -> Long get() = value::roundToLong
     override val sign: W get() = reconstruct(value.sign)
